@@ -1,10 +1,10 @@
-def print_board(board):
+def print_board(board): #prints the 3x3 board as it stands
   for row in board:
       for character in row:
         print(character, end = " ")
       print()
 
-def check_board4win(board):
+def check_board4win(board): #checks the board for all possibilities for wins
   p1 = board[0][0] + board[0][1] + board[0][2]
   p2 = board[1][0] + board[1][1] + board[1][2]
   p3 = board[2][0] + board[2][1] + board[2][2]
@@ -20,7 +20,7 @@ def check_board4win(board):
       return winner
   return None
 
-def check_row4win(possibility):
+def check_row4win(possibility): #helper function for check_board4win that checks a single row possibility
   xs = 0
   os = 0
   for symbol in possibility:
@@ -34,7 +34,7 @@ def check_row4win(possibility):
       return "O"
   return None
 
-def validate_input(user_input, board):
+def validate_input(user_input, board):  #validates the input of the user
   if len(user_input) != 2:
     return False
   for character in user_input:
@@ -48,7 +48,7 @@ def validate_input(user_input, board):
     return False
   return True
 
-def is_integer(n):
+def is_integer(n):  #returns True if string n is an int
   try:
     float(n)
     return True
@@ -72,7 +72,7 @@ def play():
     while True:
       if validate_input(user_input, game_board):
         break
-      user_input = input(f"Invalid input, {turn}. Try again\n")
+      user_input = input(f"Invalid input, {turn}. Try again:\n")
     if turn == "X":
       row = int(user_input[0])-1
       column = int(user_input[1])-1
